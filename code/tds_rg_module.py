@@ -268,10 +268,11 @@ class DistributionPlotter(object):
         if len(label) > 0:
             label = '_' + label
         plt.plot(data_ecdf.x, data_ecdf.y, label=f'ECDF{label}')
+        plt.ylabel('Cummulative Density')
         plt.legend()
 
     @staticmethod
-    def plot_ecdfs(samples, labels=''):
+    def plot_ecdfs(samples, labels='', title=''):
         """
         @brief: Calculates the empirical CDF for the given data samples and plot them on the same graph.
 
@@ -283,6 +284,7 @@ class DistributionPlotter(object):
         for i, data in enumerate(samples):
             DistributionPlotter.plot_ecdf(data, label=labels[i])
         plt.legend()
+        plt.title(title)
 
     @staticmethod
     def plot_kdes(samples):

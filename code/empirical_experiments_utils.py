@@ -85,17 +85,19 @@ def show_2_sample_comparisons(data1, data2, samples_labels="", title_suffix="", 
     plt.subplot(1, 2, 1)
     show_2_sample_helper(data1, data2, samples_labels=samples_labels)
     if scale_data is True:
+        title_suffix = "Scaled data"
         plt.subplot(1, 2, 2)
-        show_2_sample_helper(data1, data2, samples_labels=samples_labels, title_suffix="Scaled data", scale_data=True)
+        show_2_sample_helper(data1, data2, samples_labels=samples_labels, title_suffix=title_suffix, scale_data=True)
 
     if show_ecdfs is True:
+        ecdf_title = "ECDF " + title_suffix
         plt.figure(figsize=(7*2, 5))
         plt.subplot(1, 2, 1)
-        plotter.plot_ecdfs([data1, data2], samples_labels)
+        plotter.plot_ecdfs([data1, data2], samples_labels, ecdf_title)
         if scale_data is True:
             plt.subplot(1, 2, 2)
             data1, data2 = rg_sim.get_scaled_data(data1, data2)
-            plotter.plot_ecdfs([data1, data2], samples_labels)
+            plotter.plot_ecdfs([data1, data2], samples_labels, ecdf_title)
 
 
 def log_multi_test_statistics(
