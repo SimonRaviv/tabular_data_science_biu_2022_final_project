@@ -3,7 +3,6 @@
 
 Read the preprocess and 4 required datasets .
 """
-import gdown
 import pandas as pd
 
 # Dataset utility functions
