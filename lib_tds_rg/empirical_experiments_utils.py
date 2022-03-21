@@ -45,7 +45,7 @@ def print_scores(rg_score, ks_pvalue, cvm_pvalue):
     rg_score_percent = round((1 - rg_score) * 100, 4)
     tabulate_data(cols=[['RG score', 'KS P-Value', 'CVM P-Value'],
                         [str(rg_score_percent) + ' [%]', ks_pvalue, cvm_pvalue]],
-                  headers=['Measure', 'Number'])
+                  headers=['Metric', 'Value'])
 
 
 def get_empirical_comparison(dist_sample1, dist_sample2, scale_data=None):
@@ -64,7 +64,7 @@ def print_experiment_scores(rg_score, ks_pvalue, cvm_pvalue, title_suffix=""):
     rg_score_percent = round((1 - rg_score) * 100, 4)
     tabulate_data(cols=[['RG score', 'KS P-Value', 'CVM P-Value'],
                         [str(rg_score_percent) + ' [%]', ks_pvalue, cvm_pvalue]],
-                  headers=['Measure', 'Number'],
+                  headers=['Metric', 'Value'],
                   title=f'Comparison Scores{addition}')
 
 
