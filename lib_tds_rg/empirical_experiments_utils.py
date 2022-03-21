@@ -8,37 +8,9 @@ import seaborn as sns
 import numpy as np
 
 from lib_tds_rg.tds_rg_module import StatisticalTests as stest
-from lib_tds_rg.tds_rg_module import DistributionPlotter as plotter
 from lib_tds_rg.tds_rg_module import RGSimilarity as rg_sim
-
-
-def tabulate_data(cols, headers, title=None):
-    for i, col in enumerate(cols):
-        cols[i] = [str(word) for word in col]
-    col_lens = []
-    for i, c in enumerate(cols):
-        col_lens.append(max(map(len, [*c, headers[i]])))
-
-    if title is not None:
-        title_len = sum(col_lens)+3*len(col_lens)+1
-        print(f'{title : ^{title_len}}')
-    for l in col_lens:
-        print('+', '-' * (l + 2), sep='', end='')
-    print('+')
-    for i, h in enumerate(headers):
-        print(f'| {h : ^{col_lens[i] + 1}}', sep='', end='')
-    print('|')
-    for l in col_lens:
-        print('+', '=' * (l + 2), sep='', end='')
-    print('+')
-
-    for word_index in range(len(cols[0])):
-        for i, c in enumerate(cols):
-            print(f'| {c[word_index] : <{col_lens[i] + 1}}', end='')
-        print('|')
-        for l in col_lens:
-            print('+', '-' * (l + 2), sep='', end='')
-        print('+')
+from lib_tds_rg.plotting_utils import DistributionPlotter as plotter
+from lib_tds_rg.plotting_utils import tabulate_data
 
 
 def print_scores(rg_score, ks_pvalue, cvm_pvalue):
