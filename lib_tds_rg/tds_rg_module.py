@@ -11,7 +11,7 @@ from scipy import stats as st
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import minmax_scale
 from statsmodels.distributions.empirical_distribution import ECDF
-
+from lib_tds_rg.empirical_experiments_utils import tabulate_data
 
 class StatisticalTests(object):
     """
@@ -165,8 +165,12 @@ class TheoreticalDistributionFitter(object):
         # sort the results based on p-value in descending order
         results.sort(key=lambda t: t[1], reverse=True)
         if show_results is True:
-            print(f"Top {k} theoretical distributions\n")
-            print('\n'.join(map(str, results[:k])))
+            dist_names = [t[0] for t in results[:k]]
+            p_values = [t[1] for t in results[:k]]
+            tabulate_data(cols=[dist_names, p_values],
+                headers=['Distribution Name', 'P-Value'],
+                title=f'Top {k} theoretical distributions'
+            )
         return results[:k]
 
 
