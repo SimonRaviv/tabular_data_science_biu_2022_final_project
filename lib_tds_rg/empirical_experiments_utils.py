@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-from tds_rg_module import StatisticalTests as stest
-from tds_rg_module import DistributionPlotter as plotter
-from tds_rg_module import RGSimilarity as rg_sim
+from lib_tds_rg.tds_rg_module import StatisticalTests as stest
+from lib_tds_rg.tds_rg_module import DistributionPlotter as plotter
+from lib_tds_rg.tds_rg_module import RGSimilarity as rg_sim
 
 
 def tabulate_data(cols, headers, title=None):
